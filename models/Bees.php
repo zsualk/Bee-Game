@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: zsualk
- * Date: 06/04/2016
- * Time: 14:29
- */
 
 namespace app\models;
 
@@ -39,8 +33,6 @@ class DroneBee extends Bees
 {
 
 }
-
-
 
 
 

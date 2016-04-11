@@ -3,31 +3,65 @@
 namespace app\controllers;
 
 use app\models\Bees;
-use app\models\DroneBee;
 use app\models\QueenBee;
 use app\models\WorkerBee;
+use app\models\DroneBee;
+use yii\web\Session;
+
 
 class BeeController extends \yii\web\Controller
 {
+    var $session ;
     var $maxQueenNumber = 1;
     var $maxWorkerNumber = 5;
     var $maxDroneNumber = 8;
     var $beeHive = [];
+    var $queenAlive = true;
 
     public function actionIndex()
     {
-        //$this->creatingBeeHive();
-        //var_dump($this->beeHive);
+        $this->session= new Session();
+        $this->session->open();
 
+        if ($this->queenAlive == false)
+        {
+            $this->session->destroy();
+            return $this->render('exit');
+        }
+        else
+        {
+            $this->creatingBeeHive();
+            return $this->render('index');
+        }
+
+    }
+
+    public function actionHitABee()
+    {
+
+        $this->hit();
+        return $this->render('index');
+    }
+
+    public function actionExit()
+    {
+
+        return $this->render('exit');
+
+    }
+
+    public function actionReset()
+    {
+        $this->resetBee();
         return $this->render('index');
 
     }
 
     public function creatingBeeHive()
     {
-
-        $bee = new Bees(0,0,0);
-
+        $_SESSION["beeHive"] = $this->beeHive;
+        
+        $b = new Bees(0,0,0);
         // creating all the bees here
         for ($i=0 ; $i < $this->maxQueenNumber ; $i++)
         {
@@ -60,15 +94,15 @@ class BeeController extends \yii\web\Controller
         {
             $this->beeHive[$randomBee]->currentPoints = $this->beeHive[$randomBee]->currentPoints - $this->beeHive[$randomBee]->hitPoints;
 
-            echo "This bee has been hit: " . get_class($this->beeHive[$randomBee]);
+            echo "This bee has been hit: " . get_class($this->beeHive[$randomBee]) . " and has " . $this->beeHive[$randomBee]->currentPoints . " points left.";
             echo "</br>";
 
             $this->isTheQueenAlive();
         }
-
-        if ( $this->beeHive[$randomBee]->currentPoints < $this->beeHive[$randomBee]->hitPoints)
+        elseif ( $this->beeHive[$randomBee]->currentPoints < $this->beeHive[$randomBee]->hitPoints)
         {
             echo " This bee is dead " . get_class($this->beeHive[$randomBee]);
+            $this->hit();
         }
 
     }
@@ -77,26 +111,17 @@ class BeeController extends \yii\web\Controller
 
         for ($i = 0; $i < count($this->beeHive) ; $i++)
         {
-            if ($this->beeHive[$i]->maxPoints == 100)
+            if ($this->beeHive[$i]->maxPoints == 100 && $this->beeHive[$i]->currentPoints < $this->beeHive[$i]->hitPoints)
             {
-                if ($this->beeHive[$i]->currentPoints < $this->beeHive[$i]->hitPoints)
-                {
-                    echo "Queen is dead! </br>";
-                    echo "to reset press r";
-                    exit;
-                }
-                else
-                {
-                    $this->hit();
-                }
+                echo "Queen is dead! </br>";
+                $this->queenAlive = false;
+                return $this->render('index');
 
-            }
-            else
-            {
-                $this->hit() ;
             }
 
         }
+
+        return $this->render('index');
 
     }
 
@@ -106,11 +131,12 @@ class BeeController extends \yii\web\Controller
         for ($i = 0; $i < count($this->beeHive) ; $i++)
         {
 
-        $this->beeHive[$i]->currentPoints = $this->beeHive[$i]->maxPoints;
-
+            $this->beeHive[$i]->currentPoints = $this->beeHive[$i]->maxPoints;
+            echo "This bee has been hit: " . get_class($this->beeHive[$i]) . " and has " . $this->beeHive[$i]->currentPoints . " points left.";
         }
 
-    echo ("All bees are reset!!!");
+        echo ("All bees are reset!!!");
+        return $this->render('index');
 
     }
 

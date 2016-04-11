@@ -1,22 +1,22 @@
 <?php
 /* @var $this yii\web\View */
+use yii\bootstrap\ActiveForm;
+use yii\bootstrap\Html;
+
+
+
 ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 
 <h1>bee/index</h1>
 
-<input type="submit" class="button" name="Slap a bee !!!" value="slap" />
+<form action="">
+    <input type="button" value="Hit a bee!!!" onclick="location.href='/index.php?r=/bee/hit-a-bee'" />
 
-<script type="text/javascript"> $(document).ready(function(){
-$('.button').click(function(){
-var clickBtnValue = $(this).val();
-var ajaxurl = '/controllers/BeeController.php',
-data =  {'action': clickBtnValue};
-$.post(ajaxurl, data, function (response) {
-// Response div goes here.
-alert("action performed successfully");
-});
-});
+    <input type="button" value="Reset all the bees!" onclick="location.href='/index.php?r=/bee/reset'" />
 
-});
-</script>
+    <input type="button" value="Exit game!" onclick="location.href='/index.php?r=/bee/exit'" />
+</form>
+
+
+
