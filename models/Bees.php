@@ -17,25 +17,20 @@ class Bees
         $this->currentPoints = $currentPoints;
     }
 
-
-
 }
 
 class QueenBee extends Bees
 {
-
 
 }
 
 class WorkerBee extends Bees
 {
 
-
 }
 
 class DroneBee extends Bees
 {
-
 
 }
 

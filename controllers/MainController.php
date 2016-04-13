@@ -19,7 +19,8 @@ class MainController extends Controller
 
     public function creatingBeeHive()
     {
-        $bee = new Bees(0,0,0);
+        
+        new Bees(0,0,0);
 
         for ($i=0 ; $i < $this->maxQueenNumber ; $i++)
         {
@@ -42,10 +43,7 @@ class MainController extends Controller
 
         }
 
-        //$this->isTheQueenAlive();
-
     }
-
 
     public function init()
     {

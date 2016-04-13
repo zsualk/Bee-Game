@@ -1,10 +1,6 @@
 <?php
 /* @var $this yii\web\View */
-use yii\bootstrap\ActiveForm;
-use yii\bootstrap\Html;
 ?>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 
 <h1>Game Page</h1>
 
