@@ -5,7 +5,7 @@
 <h1>Game Page</h1>
 
 <form action="">
-    <input type="button" value="Hit a bee!!!" onclick="location.href='/index.php?r=/bee/beehit'" />
+    <input type="button" value="Hit a bee!!!" onclick="location.href='/index.php?r=/bee/bee-hit'" />
 
     <input type="button" value="Reset all the bees!" onclick="location.href='/index.php?r=/main'" />
 

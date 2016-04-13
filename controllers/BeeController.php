@@ -15,7 +15,8 @@ class BeeController extends MainController
 
     }
 
-    public function actionBeehit()
+    // call this function to hit the selected bee once
+    public function actionBeeHit()
     {
 
         $this->beeHive = $this->session['hive'];
@@ -24,6 +25,7 @@ class BeeController extends MainController
 
     }
 
+    // call this to destroy the actual session and exit the game
     public function actionExit()
     {
         $this->session = Yii::$app->session->destroy();
@@ -31,6 +33,7 @@ class BeeController extends MainController
 
     }
 
+    // this will reset all the bees to max points
     public function actionReset()
     {
 
@@ -39,28 +42,18 @@ class BeeController extends MainController
 
     }
 
-
-    public function beeToHit()
-    {
-
-        return array_rand($this->beeHive);
-
-    }
-
+    // Checking the bee can take more hit and hit the randomly selected bee
     public function hit()
     {
 
-        $randomBee = $this->beeToHit();
+        $randomBee = array_rand($this->beeHive);
 
-        if ( $this->beeHive[$randomBee]->currentPoints > $this->beeHive[$randomBee]->hitPoints)
-        {
+        if ($this->beeHive[$randomBee]->currentPoints > $this->beeHive[$randomBee]->hitPoints) {
 
             $this->beeHive[$randomBee]->currentPoints = $this->beeHive[$randomBee]->currentPoints - $this->beeHive[$randomBee]->hitPoints;
             echo "</br></br></br></br>This bee has been hit: " . get_class($this->beeHive[$randomBee]) . " and has " . $this->beeHive[$randomBee]->currentPoints . " points left.";
 
-        }
-        elseif ( $this->beeHive[$randomBee]->currentPoints < $this->beeHive[$randomBee]->hitPoints)
-        {
+        } elseif ($this->beeHive[$randomBee]->currentPoints < $this->beeHive[$randomBee]->hitPoints) {
 
             $this->hit();
 
@@ -68,13 +61,12 @@ class BeeController extends MainController
 
     }
 
+    // checks if the queen is alive, if yes callin the hit() function, if its dead going back to the index page
     function isTheQueenAlive(){
 
-        for ($i = 0; $i < count($this->beeHive) ; $i++)
-        {
+        for ($i = 0; $i < count($this->beeHive) ; $i++) {
 
-            if ($this->beeHive[$i]->maxPoints == 100 && $this->beeHive[$i]->currentPoints < $this->beeHive[$i]->hitPoints)
-            {
+            if ($this->beeHive[$i]->maxPoints == 100 && $this->beeHive[$i]->currentPoints < $this->beeHive[$i]->hitPoints) {
 
                 echo "</br></br></br></br>Queen is dead! </br>";
                 echo "Reset all the bees or exit game";

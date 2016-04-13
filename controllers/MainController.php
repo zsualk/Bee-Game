@@ -17,29 +17,27 @@ class MainController extends Controller
     var $maxDroneNumber = 8;
     var $beeHive = [];
 
+    // Creating the beehive from the bee class
     public function creatingBeeHive()
     {
-        
-        new Bees(0,0,0);
 
-        for ($i=0 ; $i < $this->maxQueenNumber ; $i++)
-        {
+        new Bees(0, 0, 0);
 
-            $this->beeHive[] = new QueenBee(100,8,100);
+        for ($i=0 ; $i < $this->maxQueenNumber ; $i++) {
 
-        }
-
-        for ($i=0 ; $i < $this->maxWorkerNumber ; $i++)
-        {
-
-            $this->beeHive[] = new WorkerBee(75,10,75);
+            $this->beeHive[] = new QueenBee(100, 8, 100);
 
         }
 
-        for ($i=0 ; $i < $this->maxDroneNumber ; $i++)
-        {
+        for ($i=0 ; $i < $this->maxWorkerNumber ; $i++) {
 
-            $this->beeHive[] = new DroneBee(50,12,50);
+            $this->beeHive[] = new WorkerBee(75, 10, 75);
+
+        }
+
+        for ($i=0 ; $i < $this->maxDroneNumber ; $i++) {
+
+            $this->beeHive[] = new DroneBee(50, 12, 50);
 
         }
 
