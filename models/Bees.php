@@ -12,13 +12,10 @@ class Bees
 
     public function __construct($maxPoints, $hitPoints, $currentPoints)
     {
-
         $this->maxPoints = $maxPoints;
         $this->hitPoints = $hitPoints;
         $this->currentPoints = $currentPoints;
-
     }
-
 }
 
 class QueenBee extends Bees
@@ -29,12 +26,10 @@ class QueenBee extends Bees
 class WorkerBee extends Bees
 {
 
-
 }
 
 class DroneBee extends Bees
 {
-
 
 }
 
