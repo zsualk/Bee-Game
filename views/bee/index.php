@@ -6,7 +6,7 @@ use yii\bootstrap\Html;
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 
-<h1>bee/index</h1>
+<h1>Game Page</h1>
 
 <form action="">
     <input type="button" value="Hit a bee!!!" onclick="location.href='/index.php?r=/bee/beehit'" />

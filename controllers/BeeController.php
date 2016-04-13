@@ -7,8 +7,6 @@ use Yii;
 class BeeController extends MainController
 {
 
-    var $queenAlive ;
-
     public function actionIndex()
     {
 
@@ -58,7 +56,7 @@ class BeeController extends MainController
         {
 
             $this->beeHive[$randomBee]->currentPoints = $this->beeHive[$randomBee]->currentPoints - $this->beeHive[$randomBee]->hitPoints;
-            echo "This bee has been hit: " . get_class($this->beeHive[$randomBee]) . " and has " . $this->beeHive[$randomBee]->currentPoints . " points left.";
+            echo "</br></br></br></br>This bee has been hit: " . get_class($this->beeHive[$randomBee]) . " and has " . $this->beeHive[$randomBee]->currentPoints . " points left.";
 
         }
         elseif ( $this->beeHive[$randomBee]->currentPoints < $this->beeHive[$randomBee]->hitPoints)
@@ -78,10 +76,9 @@ class BeeController extends MainController
             if ($this->beeHive[$i]->maxPoints == 100 && $this->beeHive[$i]->currentPoints < $this->beeHive[$i]->hitPoints)
             {
 
-                echo "Queen is dead! </br>";
-                $this->queenAlive = false;
-                exit;
-                return $this->render('reset');
+                echo "</br></br></br></br>Queen is dead! </br>";
+                echo "Reset all the bees or exit game";
+                return $this->actionIndex();
 
             }
 

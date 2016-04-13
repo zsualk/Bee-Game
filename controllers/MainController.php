@@ -16,7 +16,6 @@ class MainController extends Controller
     var $maxWorkerNumber = 5;
     var $maxDroneNumber = 8;
     var $beeHive = [];
-    var $queenAlive;
 
     public function creatingBeeHive()
     {
@@ -26,7 +25,6 @@ class MainController extends Controller
         {
 
             $this->beeHive[] = new QueenBee(100,8,100);
-            $this->queenAlive = true;
 
         }
 
@@ -60,7 +58,6 @@ class MainController extends Controller
     public function actionIndex()
     {
 
-        echo $this->session->id;
         return $this->render('index');
 
     }
