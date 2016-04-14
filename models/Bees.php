@@ -4,11 +4,12 @@ namespace app\models;
 
 use yii\base\Model;
 
-class Bees
+// Main Bee class
+class Bees extends Model
 {
-    var $maxPoints = 0;
-    var $hitPoints = 0;
-    var $currentPoints = 0;
+    var $maxPoints;
+    var $hitPoints;
+    var $currentPoints;
 
     public function __construct($maxPoints, $hitPoints, $currentPoints)
     {
@@ -16,21 +17,6 @@ class Bees
         $this->hitPoints = $hitPoints;
         $this->currentPoints = $currentPoints;
     }
-}
-
-class QueenBee extends Bees
-{
-
-}
-
-class WorkerBee extends Bees
-{
-
-}
-
-class DroneBee extends Bees
-{
-
 }
 
 

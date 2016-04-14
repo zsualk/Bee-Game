@@ -47,7 +47,7 @@ class BeeController extends MainController
         }
     }
 
-    // checks if the queen is alive, if yes callin the hit() function, if its dead going back to the index page
+    // checks if the queen is alive, if yes calling the hit() function, if its dead going back to the index page
     function isTheQueenAlive(){
 
         for ($i = 0; $i < count($this->beeHive); $i++) {
