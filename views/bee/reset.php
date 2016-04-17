@@ -4,6 +4,6 @@
 <h1>The Queen is dead!!!</h1>
 
 <form action="">
-    <input type="button" value="Back to the game !" onclick="location.href='/index.php?r=/main'" />
+    <input type="button" value="Back to the game !" onclick="location.href='/main'" />
 </form>
 

@@ -8,11 +8,11 @@ echo $message;
 ?>
 
 <form action="">
-    <input type="button" value="Hit a bee!!!" onclick="location.href='/index.php?r=/bee/bee-hit'" />
+    <input type="button" value="Hit a bee!!!" onclick="location.href='/bee/bee-hit'" />
 
-    <input type="button" value="Reset all the bees!" onclick="location.href='/index.php?r=/main'" />
+    <input type="button" value="Reset all the bees!" onclick="location.href='/main'" />
 
-    <input type="button" value="Exit game!" onclick="location.href='/index.php?r=/bee/exit'" />
+    <input type="button" value="Exit game!" onclick="location.href='/bee/exit'" />
 </form>
 
 
