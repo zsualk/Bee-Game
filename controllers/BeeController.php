@@ -6,10 +6,13 @@ use Yii;
 
 class BeeController extends MainController
 {
+    var $message;
+
     public function actionIndex()
     {
+        $message = $this->message;
         $this->session['hive'] = $this->beeHive;
-        return $this->render('index');
+        return $this->render('index', ['message'=>$message]);
     }
 
     // hit the selected bee once
@@ -17,7 +20,8 @@ class BeeController extends MainController
     {
         $this->beeHive = $this->session['hive'];
         $this->isTheQueenAlive();
-        return $this->render('index');
+        $message = $this->message;
+        return $this->render('index', ['message'=>$message]);
     }
 
     // destroy the live session and exit the game
@@ -41,7 +45,7 @@ class BeeController extends MainController
 
         if ($this->beeHive[$randomBee]->currentPoints > $this->beeHive[$randomBee]->hitPoints) {
             $this->beeHive[$randomBee]->currentPoints = $this->beeHive[$randomBee]->currentPoints - $this->beeHive[$randomBee]->hitPoints;
-            echo "</br></br></br></br>This bee has been hit: " . get_class($this->beeHive[$randomBee]) . " and has " . $this->beeHive[$randomBee]->currentPoints . " points left.";
+            $this->message = "</br>This bee has been hit: " . get_class($this->beeHive[$randomBee]) . " and has " . $this->beeHive[$randomBee]->currentPoints . " points left.";
         } elseif ($this->beeHive[$randomBee]->currentPoints < $this->beeHive[$randomBee]->hitPoints) {
             $this->hit();
         }
@@ -52,8 +56,7 @@ class BeeController extends MainController
 
         for ($i = 0; $i < count($this->beeHive); $i++) {
             if ($this->beeHive[$i]->maxPoints == 100 && $this->beeHive[$i]->currentPoints < $this->beeHive[$i]->hitPoints) {
-                echo "</br></br></br></br>Queen is dead! </br>";
-                echo "Reset all the bees or exit game";
+                $this->message = "</br>Queen is dead! </br>Reset all the bees or exit game";
                 return $this->actionIndex();
             }
         }

@@ -15,19 +15,13 @@ class MainController extends Controller
     // Creating the beehive from the bee class
     public function creatingBeeHive()
     {
-
-        $maxQueenNumber =  Yii::$app->params['maxQueenNumber'];
-        for ($i=0; $i < $maxQueenNumber; $i++) {
+        for ($i=0; $i < Yii::$app->params['maxQueenNumber']; $i++) {
             $this->beeHive[] = new QueenBee(100, 8, 100);
         }
-
-        $maxWorkerNumber =  Yii::$app->params['maxWorkerNumber'];
-        for ($i=0; $i < $maxWorkerNumber; $i++) {
+        for ($i=0; $i < Yii::$app->params['maxWorkerNumber']; $i++) {
             $this->beeHive[] = new WorkerBee(75, 10, 75);
         }
-
-        $maxDroneNumber =  Yii::$app->params['maxDroneNumber'];
-        for ($i=0; $i < $maxDroneNumber; $i++) {
+        for ($i=0; $i < Yii::$app->params['maxDroneNumber']; $i++) {
             $this->beeHive[] = new DroneBee(50, 12, 50);
         }
     }
@@ -36,7 +30,6 @@ class MainController extends Controller
     {
         $this->creatingBeeHive();
         $this->session = Yii::$app->session;
-        $this->session->open();
     }
 
     public function actionIndex()

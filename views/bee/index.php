@@ -3,6 +3,9 @@
 ?>
 
 <h1>Game Page</h1>
+<?php
+echo $message;
+?>
 
 <form action="">
     <input type="button" value="Hit a bee!!!" onclick="location.href='/index.php?r=/bee/bee-hit'" />
