@@ -11,14 +11,14 @@ class BeeController extends MainController
     public function actionIndex()
     {
         $message = $this->message;
-        $this->session['hive'] = $this->beeHive;
+        Yii::$app->session['hive'] = $this->beeHive;
         return $this->render('index', ['message'=>$message]);
     }
 
     // hit the selected bee once
     public function actionBeeHit()
     {
-        $this->beeHive = $this->session['hive'];
+        $this->beeHive = Yii::$app->session['hive'];
         $this->isTheQueenAlive();
         $message = $this->message;
         return $this->render('index', ['message'=>$message]);
@@ -27,7 +27,7 @@ class BeeController extends MainController
     // destroy the live session and exit the game
     public function actionExit()
     {
-        $this->session = Yii::$app->session->destroy();
+        Yii::$app->session->destroy();
         return $this->render('exit');
     }
 

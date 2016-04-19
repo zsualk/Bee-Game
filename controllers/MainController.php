@@ -2,6 +2,7 @@
 namespace app\controllers;
 
 use app\models\DroneBee;
+use app\models\IronBee;
 use app\models\QueenBee;
 use app\models\WorkerBee;
 use Yii;
@@ -9,7 +10,6 @@ use yii\web\Controller;
 
 class MainController extends Controller
 {
-    var $session;
     var $beeHive = [];
 
     // Creating the beehive from the bee class
@@ -24,12 +24,14 @@ class MainController extends Controller
         for ($i=0; $i < Yii::$app->params['maxDroneNumber']; $i++) {
             $this->beeHive[] = new DroneBee(50, 12, 50);
         }
+        for ($i=0; $i < Yii::$app->params['maxIronNumber']; $i++) {
+            $this->beeHive[] = new IronBee(1, 0, 1);
+        }
     }
 
     public function init()
     {
         $this->creatingBeeHive();
-        $this->session = Yii::$app->session;
     }
 
     public function actionIndex()
