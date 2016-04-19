@@ -5,10 +5,8 @@ namespace app\models;
 // Worker bee class
 class WorkerBee extends Bees
 {
-    public function workerBee(Bees $maxPoints,Bees $hitPoints,Bees $currentPoints)
+    public function workerBee()
     {
-        $this->maxPoints = $maxPoints;
-        $this->hitPoints = $hitPoints;
-        $this->currentPoints = $currentPoints;
+        $this->points(100,8,100);
     }
 }

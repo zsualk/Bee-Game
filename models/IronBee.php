@@ -4,11 +4,9 @@ namespace app\models;
 
 class IronBee extends Bees
 {
-    public function ironBee(Bees $maxPoints,Bees $hitPoints,Bees $currentPoints)
+    var $magnes;
+    public function ironBee($magnes)
     {
-        $this->maxPoints = $maxPoints;
-        $this->hitPoints = $hitPoints;
-        $this->currentPoints = $currentPoints;
-        $color = "black";
+        $this->magnes = $magnes;
     }
 }
