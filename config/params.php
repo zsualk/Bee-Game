@@ -5,5 +5,5 @@ return [
     'maxQueenNumber' => 1,
     'maxWorkerNumber' => 5,
     'maxDroneNumber' => 8,
-    'maxIronBee' => 1,
+    'maxIronNumber' => 1,
 ];

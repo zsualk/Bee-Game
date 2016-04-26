@@ -11,11 +11,9 @@ class Bees extends Model
     var $hitPoints;
     var $currentPoints;
 
-    public function points($maxPoints, $hitPoints, $currentPoints)
+    public function __construct()
     {
-        $this->maxPoints = $maxPoints;
-        $this->hitPoints = $hitPoints;
-        $this->currentPoints = $currentPoints;
+
     }
 }
 

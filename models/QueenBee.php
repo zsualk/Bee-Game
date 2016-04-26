@@ -5,8 +5,10 @@ namespace app\models;
 // Queen bee class
 class QueenBee extends Bees
 {
-    public function queenBee()
+    public function queenBee($maxPoints, $hitPoints, $currentPoints)
     {
-        $this->points(100,8,100);
+        $this->maxPoints = $maxPoints;
+        $this->hitPoints = $hitPoints;
+        $this->currentPoints = $currentPoints;
     }
 }
