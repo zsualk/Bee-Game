@@ -4,8 +4,16 @@ namespace app\models;
 
 class IronBee extends Bees
 {
-    public function ironBee($magnes)
+    var $justFly;
+
+    public function createBee()
     {
-        $this->magnes = $magnes;
+        $this->justFly = true;
+    }
+
+    public function __construct()
+    {
+        $this->createBee();
+        parent::__construct();
     }
 }

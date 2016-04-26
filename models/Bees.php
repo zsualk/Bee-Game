@@ -13,7 +13,14 @@ class Bees extends Model
 
     public function __construct()
     {
+        parent::__construct();
+    }
 
+    public function createBee($maxPoints, $hitPoints, $currentPoints)
+    {
+        $this->maxPoints = $maxPoints;
+        $this->hitPoints = $hitPoints;
+        $this->currentPoints = $currentPoints;
     }
 }
 

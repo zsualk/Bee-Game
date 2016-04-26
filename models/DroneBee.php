@@ -5,10 +5,9 @@ namespace app\models;
 // Drone bee class
 class DroneBee extends Bees
 {
-    public function droneBee($maxPoints, $hitPoints, $currentPoints)
+    public function __construct()
     {
-        $this->maxPoints = $maxPoints;
-        $this->hitPoints = $hitPoints;
-        $this->currentPoints = $currentPoints;
+        $this->createBee(50, 12, 50);
+        parent::__construct();
     }
 }

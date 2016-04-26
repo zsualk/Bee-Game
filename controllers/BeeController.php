@@ -43,6 +43,10 @@ class BeeController extends MainController
     {
         $randomBee = array_rand($this->beeHive);
 
+        if ($this->beeHive[$randomBee]->hitPoints == NULL){
+            $this->message = "</br> The iron bee just come to fly.";
+        }
+
         if ($this->beeHive[$randomBee]->currentPoints > $this->beeHive[$randomBee]->hitPoints) {
             $this->beeHive[$randomBee]->currentPoints = $this->beeHive[$randomBee]->currentPoints - $this->beeHive[$randomBee]->hitPoints;
             $this->message = "</br>This bee has been hit: " . get_class($this->beeHive[$randomBee]) . " and has " . $this->beeHive[$randomBee]->currentPoints . " points left.";

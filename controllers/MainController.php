@@ -16,16 +16,16 @@ class MainController extends Controller
     public function creatingBeeHive()
     {
         for ($i=0; $i < Yii::$app->params['maxQueenNumber']; $i++) {
-            $this->beeHive[] = new QueenBee(100, 8, 100);
+            $this->beeHive[] = new QueenBee;
         }
         for ($i=0; $i < Yii::$app->params['maxWorkerNumber']; $i++) {
-            $this->beeHive[] = new WorkerBee(75, 10, 75);
+            $this->beeHive[] = new WorkerBee;
         }
         for ($i=0; $i < Yii::$app->params['maxDroneNumber']; $i++) {
-            $this->beeHive[] = new DroneBee(50, 12, 50);
+            $this->beeHive[] = new DroneBee;
         }
         for ($i=0; $i < Yii::$app->params['maxIronNumber']; $i++) {
-            $this->beeHive[] = new IronBee("teszt");
+            $this->beeHive[] = new IronBee;
         }
     }
 
