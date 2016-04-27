@@ -7,7 +7,14 @@ class WorkerBee extends Bees
 {
     public function __construct()
     {
-        $this->createBee(75, 10, 75);
+        $this->createBee();
         parent::__construct();
+    }
+
+    public function createBee()
+    {
+        $this->maxPoints = 75;
+        $this->hitPoints = 10;
+        $this->currentPoints = 75;
     }
 }

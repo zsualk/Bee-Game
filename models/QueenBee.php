@@ -7,7 +7,14 @@ class QueenBee extends Bees
 {
     public function __construct()
     {
-        $this->createBee(100, 8, 100);
+        $this->createBee();
         parent::__construct();
+    }
+
+    public function createBee()
+    {
+        $this->maxPoints = 100;
+        $this->hitPoints = 8;
+        $this->currentPoints = 100;
     }
 }

@@ -5,7 +5,7 @@ namespace app\models;
 use yii\base\Model;
 
 // Main Bee class
-class Bees extends Model
+abstract class Bees extends Model
 {
     var $maxPoints;
     var $hitPoints;
@@ -16,12 +16,7 @@ class Bees extends Model
         parent::__construct();
     }
 
-    public function createBee($maxPoints, $hitPoints, $currentPoints)
-    {
-        $this->maxPoints = $maxPoints;
-        $this->hitPoints = $hitPoints;
-        $this->currentPoints = $currentPoints;
-    }
+    abstract public function createBee();
 }
 
 
