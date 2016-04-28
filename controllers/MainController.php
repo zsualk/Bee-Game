@@ -10,28 +10,11 @@ use yii\web\Controller;
 
 class MainController extends Controller
 {
-    var $beeHive = [];
-
-    // Creating the beehive from the bee class
-    public function creatingBeeHive()
-    {
-        for ($i=0; $i < Yii::$app->params['maxQueenNumber']; $i++) {
-            $this->beeHive[] = BeeFactory::build(new QueenBee());
-        }
-        for ($i=0; $i < Yii::$app->params['maxWorkerNumber']; $i++) {
-            $this->beeHive[] = BeeFactory::build(new WorkerBee());
-        }
-        for ($i=0; $i < Yii::$app->params['maxDroneNumber']; $i++) {
-            $this->beeHive[] = BeeFactory::build(new DroneBee());
-        }
-        for ($i=0; $i < Yii::$app->params['maxIronNumber']; $i++) {
-            $this->beeHive[] = BeeFactory::build(new IronBee());
-        }
-    }
-
+    var $beeHive;
     public function init()
     {
-        $this->creatingBeeHive();
+        $beeFactory = new BeeFactory();
+        $this->beeHive = $beeFactory->build();
     }
 
     public function actionIndex()
