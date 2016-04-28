@@ -34,7 +34,7 @@ class BeeController extends MainController
     // reset all the bees to max points
     public function actionReset()
     {
-        BeeFactory::build();
+        $this->beeHive = $this->beeFactory->build();
         return $this->render('index');
     }
 

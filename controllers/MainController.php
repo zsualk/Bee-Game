@@ -1,10 +1,6 @@
 <?php
 namespace app\controllers;
 
-use app\models\DroneBee;
-use app\models\IronBee;
-use app\models\QueenBee;
-use app\models\WorkerBee;
 use Yii;
 use yii\web\Controller;
 
