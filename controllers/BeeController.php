@@ -8,6 +8,7 @@ use Yii;
 class BeeController extends MainController
 {
     protected $message;
+
     /**
      * @return string
      */
@@ -44,7 +45,6 @@ class BeeController extends MainController
      */
     public function actionReset()
     {
-        //$beeFactory = new BeeFactory();
         Yii::$app->session['hive'] = $this->build();
         return $this->render('index', ['message'=> $this->message]);
     }

@@ -28,7 +28,7 @@ class QueenBee extends Bees
 
     /**
      * @return string
-     * checks if the queen is alive, if yes calling the hit() function, if its dead going back to the index page
+     * checks if the queen is alive
      */
     function isTheQueenAlive(){
         for ($i = 0; $i < count($this->beeHive); $i++) {

@@ -43,7 +43,6 @@ class MainController extends Controller
         for ($i=0; $i < Yii::$app->params['maxIronNumber']; $i++) {
             $this->newBeeHive[] = BeeFactory::beeBuild("iron");
         }
-        Yii::$app->session['hive'] = $this->newBeeHive;
         return $this->newBeeHive;
     }
 

@@ -64,14 +64,6 @@ abstract class Bees extends Model
     }
 
     /**
-     * Bees constructor.
-     */
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
-    /**
      * @return mixed
      */
     public function getMessage()
@@ -120,6 +112,14 @@ abstract class Bees extends Model
     }
 
     /**
+     * Bees constructor.
+     */
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
+    /**
      * @return mixed
      */
     abstract public function createBee();
@@ -130,7 +130,7 @@ abstract class Bees extends Model
     public function hit()
     {
         $this->beeHive = Yii::$app->session['hive'];
-        $randomBee = array_rand($this->beeHive);
+        $randomBee = array_rand($this->beeHive); //choosing the random bee
 
         if ($this->beeHive[$randomBee]->hitPoints == NULL){
             $this->message = "</br> The iron bee just come to fly.";
