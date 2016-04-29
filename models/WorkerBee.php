@@ -5,12 +5,18 @@ namespace app\models;
 // Worker bee class
 class WorkerBee extends Bees
 {
+    /**
+     * WorkerBee constructor.
+     */
     public function __construct()
     {
         $this->createBee();
         parent::__construct();
     }
 
+    /**
+     * creating worker bee with this points
+     */
     public function createBee()
     {
         $this->maxPoints = 75;
