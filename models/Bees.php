@@ -13,18 +13,18 @@ abstract class Bees extends Model
     protected $currentPoints;
     protected $message;
     protected $beeHive;
-    protected $beeType;
+    protected $isQueenAlive;
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getMaxPoints()
     {
-        return $this->maxPoints;
+        return (int)$this->maxPoints;
     }
 
     /**
-     * @param mixed $maxPoints
+     * @param int $maxPoints
      */
     public function setMaxPoints($maxPoints)
     {
@@ -32,15 +32,15 @@ abstract class Bees extends Model
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getHitPoints()
     {
-        return $this->hitPoints;
+        return (int)$this->hitPoints;
     }
 
     /**
-     * @param mixed $hitPoints
+     * @param int $hitPoints
      */
     public function setHitPoints($hitPoints)
     {
@@ -48,15 +48,15 @@ abstract class Bees extends Model
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getCurrentPoints()
     {
-        return $this->currentPoints;
+        return (int)$this->currentPoints;
     }
 
     /**
-     * @param mixed $currentPoints
+     * @param int $currentPoints
      */
     public function setCurrentPoints($currentPoints)
     {
@@ -64,15 +64,15 @@ abstract class Bees extends Model
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getMessage()
     {
-        return $this->message;
+        return (string)$this->message;
     }
 
     /**
-     * @param mixed $message
+     * @param string $message
      */
     public function setMessage($message)
     {
@@ -80,7 +80,7 @@ abstract class Bees extends Model
     }
 
     /**
-     * @return mixed
+     * @return array
      */
     public function getBeeHive()
     {
@@ -88,7 +88,7 @@ abstract class Bees extends Model
     }
 
     /**
-     * @param mixed $beeHive
+     * @param array $beeHive
      */
     public function setBeeHive($beeHive)
     {
@@ -96,19 +96,19 @@ abstract class Bees extends Model
     }
 
     /**
-     * @return mixed
+     * @return bool
      */
-    public function getBeeType()
+    public function getIsQueenAlive()
     {
-        return $this->beeType;
+        return $this->isQueenAlive;
     }
 
     /**
-     * @param mixed $beeType
+     * @param bool $isQueenAlive
      */
-    public function setBeeType($beeType)
+    public function setIsQueenAlive($isQueenAlive)
     {
-        $this->beeType = $beeType;
+        $this->isQueenAlive = $isQueenAlive;
     }
 
     /**
@@ -120,28 +120,28 @@ abstract class Bees extends Model
     }
 
     /**
-     * @return mixed
+     * @return int
+     * Set the points for the current bee type
      */
-    abstract public function createBee();
+    abstract public function beePoints();
 
     /**
-     * Checking the bee can take more hit and after hit the randomly selected bee
+     * Checking the bee can take more hit and if it is true hit the randomly selected bee
      */
     public function hit()
     {
         $this->beeHive = Yii::$app->session['hive'];
-        $randomBee = array_rand($this->beeHive); //choosing the random bee
-
-        if ($this->beeHive[$randomBee]->hitPoints == NULL){
-            $this->message = "</br> The iron bee just come to fly.";
-        }
+        $randomBee = array_rand($this->beeHive); //Choosing the random bee
 
         if ($this->beeHive[$randomBee]->currentPoints > $this->beeHive[$randomBee]->hitPoints) {
             $this->beeHive[$randomBee]->currentPoints = $this->beeHive[$randomBee]->currentPoints - $this->beeHive[$randomBee]->hitPoints;
-            $this->message = "</br>This bee has been hit: " . get_class($this->beeHive[$randomBee]) . " and has " . $this->beeHive[$randomBee]->currentPoints . " points left.";
-            Yii::$app->session['hive'][$randomBee] = $this->beeHive[$randomBee];
+            $this->setMessage("This bee has been hit: " . get_class($this->beeHive[$randomBee]) . " and has " . $this->beeHive[$randomBee]->currentPoints . " points left.");
         } elseif ($this->beeHive[$randomBee]->currentPoints < $this->beeHive[$randomBee]->hitPoints) {
             $this->hit();
+        }
+
+        if ($this->beeHive[$randomBee]->hitPoints == NULL){
+            $this->message = "The iron bee just come to fly.";
         }
     }
 }

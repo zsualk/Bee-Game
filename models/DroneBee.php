@@ -10,14 +10,14 @@ class DroneBee extends Bees
      */
     public function __construct()
     {
-        $this->createBee();
+        $this->beePoints();
         parent::__construct();
     }
 
     /**
-     * creating drone bee with this points
+     * Creating drone bee with this points
      */
-    public function createBee()
+    public function beePoints()
     {
         $this->maxPoints = 50;
         $this->hitPoints = 12;

@@ -7,7 +7,7 @@ use yii;
 class BeeFactory {
 
     /**
-     * @param $type
+     * @param $type - This will give the type of the bee to be created
      * @return DroneBee|IronBee|QueenBee|WorkerBee
      * @throws Exception
      */
@@ -23,7 +23,7 @@ class BeeFactory {
             case "iron":
                 return new IronBee();
             default:
-                throw new Exception("Invalid type.");
+                throw new Exception("Invalid bug type.");
         }
     }
 }

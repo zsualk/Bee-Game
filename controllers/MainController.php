@@ -10,7 +10,7 @@ class MainController extends Controller
     protected $newBeeHive;
 
     /**
-     * @return mixed
+     * @return array
      */
     public function getBeeHive()
     {
@@ -18,7 +18,7 @@ class MainController extends Controller
     }
 
     /**
-     * @param mixed $beeHive
+     * @param int $beeHive[]
      */
     public function setBeeHive($beeHive)
     {
@@ -26,21 +26,21 @@ class MainController extends Controller
     }
 
     /**
-     * @return mixed
-     * bee factory
+     * @return array
+     * Bee factory
      */
     public function build()
     {
-        for ($i=0; $i < Yii::$app->params['maxQueenNumber']; $i++) {
+        for ($i = 0; $i < Yii::$app->params['maxQueenNumber']; $i++) {
             $this->newBeeHive[] = BeeFactory::beeBuild("queen");
         }
-        for ($i=0; $i < Yii::$app->params['maxWorkerNumber']; $i++) {
+        for ($i = 0; $i < Yii::$app->params['maxWorkerNumber']; $i++) {
             $this->newBeeHive[] = BeeFactory::beeBuild("worker");;
         }
-        for ($i=0; $i < Yii::$app->params['maxDroneNumber']; $i++) {
+        for ($i = 0; $i < Yii::$app->params['maxDroneNumber']; $i++) {
             $this->newBeeHive[] = BeeFactory::beeBuild("drone");
         }
-        for ($i=0; $i < Yii::$app->params['maxIronNumber']; $i++) {
+        for ($i = 0; $i < Yii::$app->params['maxIronNumber']; $i++) {
             $this->newBeeHive[] = BeeFactory::beeBuild("iron");
         }
         return $this->newBeeHive;
@@ -48,13 +48,12 @@ class MainController extends Controller
 
     /**
      * @return string
-     * rendering main index page
+     * Rendering main index page
      */
     public function actionIndex()
     {
+
         Yii::$app->session['hive'] = $this->build(); // generating the beehive
         return $this->render('index');
     }
-
-
 }

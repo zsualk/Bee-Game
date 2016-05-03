@@ -2,7 +2,6 @@
 
 namespace app\models;
 
-// Queen bee class
 use yii;
 
 class QueenBee extends Bees
@@ -12,28 +11,30 @@ class QueenBee extends Bees
      */
     public function __construct()
     {
-        $this->createBee();
+        $this->beePoints();
         parent::__construct();
     }
 
     /**
-     * creating queen bee with this points
+     * Creating queen bee with this points
      */
-    public function createBee()
+    public function beePoints()
     {
         $this->maxPoints = 100;
         $this->hitPoints = 8;
         $this->currentPoints = 100;
+        $this->isQueenAlive = true;
     }
 
     /**
      * @return string
-     * checks if the queen is alive
+     * Checks if the queen is alive
      */
-    function isTheQueenAlive(){
+    public function isTheQueenAlive(){
+        $this->beeHive = Yii::$app->session['hive'];
         for ($i = 0; $i < count($this->beeHive); $i++) {
             if ($this->beeHive[$i]->maxPoints == 100 && $this->beeHive[$i]->currentPoints < $this->beeHive[$i]->hitPoints) {
-               $this->message = "</br>Queen is dead! </br>Reset all the bees or exit game";
+                return $this->isQueenAlive = false;
             }
         }
         $this->hit();

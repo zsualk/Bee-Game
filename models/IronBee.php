@@ -5,9 +5,9 @@ namespace app\models;
 class IronBee extends Bees
 {
     /**
-     * creating iron bee
+     * Creating iron bee
      */
-    public function createBee()
+    public function beePoints()
     {
 
     }
@@ -17,7 +17,7 @@ class IronBee extends Bees
      */
     public function __construct()
     {
-        $this->createBee();
+        $this->beePoints();
         parent::__construct();
     }
 }
